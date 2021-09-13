@@ -17,54 +17,82 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: CustomScrollView(
-        slivers: [
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(common_gap),
-                      child: RoundedAvatar(
-                        size: 80,
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: common_gap),
-                        child: Table(
-                          children: [
-                            TableRow(
-                              children: [
-                                _valueText('122'),
-                                _valueText('12'),
-                                _valueText('167'),
-                              ],
+    return SafeArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _appbar(),
+          Expanded(
+            child: CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(common_gap),
+                            child: RoundedAvatar(
+                              size: 80,
                             ),
-                            TableRow(children: [
-                              _labelText('Post'),
-                              _labelText('Followers'),
-                              _labelText('Follwing'),
-                            ]),
-                          ],
-                        ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: common_gap),
+                              child: Table(
+                                children: [
+                                  TableRow(
+                                    children: [
+                                      _valueText('122'),
+                                      _valueText('12'),
+                                      _valueText('167'),
+                                    ],
+                                  ),
+                                  TableRow(children: [
+                                    _labelText('Post'),
+                                    _labelText('Followers'),
+                                    _labelText('Follwing'),
+                                  ]),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
+                      _username(),
+                      _userBio(),
+                      _editProfileBtn(),
+                      _tabButtons(),
+                      _selectedIndicator()
+                    ],
+                  ),
                 ),
-                _username(),
-                _userBio(),
-                _editProfileBtn(),
-                _tabButtons(),
-                _selectedIndicator()
+                _imagesPager()
               ],
             ),
           ),
-          _imagesPager()
         ],
       ),
+    );
+  }
+
+  Row _appbar() {
+    return Row(
+      children: [
+        SizedBox(width: 44),
+        Expanded(
+          child: Text(
+            'user888',
+            textAlign: TextAlign.center,
+          ),
+        ),
+        IconButton(
+          onPressed: null,
+          icon: Icon(
+            Icons.menu,
+          ),
+        ),
+      ],
     );
   }
 

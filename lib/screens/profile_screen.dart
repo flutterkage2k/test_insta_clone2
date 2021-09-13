@@ -10,35 +10,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _appbar(),
-            ProfileBody(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Row _appbar() {
-    return Row(
-      children: [
-        SizedBox(width: 44),
-        Expanded(
-          child: Text(
-            'user888',
-            textAlign: TextAlign.center,
-          ),
-        ),
-        IconButton(
-          onPressed: null,
-          icon: Icon(
-            Icons.menu,
-          ),
-        ),
-      ],
+      body: ProfileBody(),
     );
   }
 }
