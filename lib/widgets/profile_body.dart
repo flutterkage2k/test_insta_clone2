@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:test_finance/constants/common_size.dart';
 import 'package:test_finance/constants/screen_size.dart';
+import 'package:test_finance/screens/profile_screen.dart';
 import 'package:test_finance/widgets/rounded_avatar.dart';
 
 class ProfileBody extends StatefulWidget {
+  final Function onMenuChanged;
+
+  ProfileBody({required this.onMenuChanged});
+
   @override
   State<ProfileBody> createState() => _ProfileBodyState();
 }
@@ -51,7 +56,7 @@ class _ProfileBodyState extends State<ProfileBody> {
                                   TableRow(children: [
                                     _labelText('Post'),
                                     _labelText('Followers'),
-                                    _labelText('Follwing'),
+                                    _labelText('Following'),
                                   ]),
                                 ],
                               ),
@@ -87,7 +92,9 @@ class _ProfileBodyState extends State<ProfileBody> {
           ),
         ),
         IconButton(
-          onPressed: null,
+          onPressed: () {
+            widget.onMenuChanged();
+          },
           icon: Icon(
             Icons.menu,
           ),
@@ -119,13 +126,13 @@ class _ProfileBodyState extends State<ProfileBody> {
       child: Stack(
         children: [
           AnimatedContainer(
-            duration: Duration(milliseconds: 300),
+            duration: duration,
             transform: Matrix4.translationValues(_leftImagesPageMargin, 0, 0),
             curve: Curves.fastOutSlowIn,
             child: _images(),
           ),
           AnimatedContainer(
-            duration: Duration(milliseconds: 300),
+            duration: duration,
             transform: Matrix4.translationValues(_rightImagesPageMargin, 0, 0),
             curve: Curves.fastOutSlowIn,
             child: _images(),
@@ -152,7 +159,7 @@ class _ProfileBodyState extends State<ProfileBody> {
 
   Widget _selectedIndicator() {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
+      duration: duration,
       alignment: _selectedTab == SelectedTab.left
           ? Alignment.centerLeft
           : Alignment.centerRight,
@@ -169,7 +176,7 @@ class _ProfileBodyState extends State<ProfileBody> {
     return Row(
       children: [
         Expanded(
-          //expanded를 하는 이유는 image로 되어있으면 click하는 영역의 차이가 발생한다.
+          //expanded 를 하는 이유는 image 로 되어있으면 click 하는 영역의 차이가 발생한다.
           child: IconButton(
             icon: ImageIcon(
               AssetImage('assets/grid.png'),
@@ -232,7 +239,7 @@ class _ProfileBodyState extends State<ProfileBody> {
           ),
           onPressed: () {},
           child: Text(
-            'Edit Progile',
+            'Edit Profile',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
