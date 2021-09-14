@@ -4,7 +4,7 @@ import 'package:test_finance/constants/screen_size.dart';
 import 'package:test_finance/widgets/profile_body.dart';
 import 'package:test_finance/widgets/profile_side_menu.dart';
 
-const duration = Duration(milliseconds: 300);
+const duration = Duration(milliseconds: 1000);
 
 class ProfileScreen extends StatefulWidget {
   @override
